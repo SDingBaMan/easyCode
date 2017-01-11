@@ -21,7 +21,7 @@ fi
 
 
 JVM_OPTS="-Dapp.root=$basedir \
-       -Dspring.profiles.active=prod \
+       -Dspring.profiles.active=dev \
         -server \
         -Xms2G \
         -Xmx2G \
