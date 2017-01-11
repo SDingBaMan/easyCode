@@ -1,0 +1,54 @@
+#!/bin/sh
+
+this="${BASH_SOURCE-$0}"
+if readlink -f "$this" > /dev/null 2>&1
+then
+  this=`readlink -f "$this"`
+fi
+basedir=`dirname "$this"`
+basedir=`cd "$basedir/..">/dev/null; pwd`
+
+[ ! -d $basedir/run ] && mkdir $basedir/run
+[ ! -d $basedir/log ] && mkdir $basedir/log
+
+PIDFILE=$basedir/bin/extend_server.pid
+
+if [ -x $JAVA_HOME/bin/java ]; then
+    JAVA=$JAVA_HOME/bin/java
+else
+    JAVA=`which java`
+fi
+
+
+JVM_OPTS="-Dapp.root=$basedir \
+       -Dspring.profiles.active=prod \
+        -server \
+        -Xms2G \
+        -Xmx2G \
+        -XX:+UseParNewGC \
+        -XX:+UseConcMarkSweepGC \
+        -XX:+CMSParallelRemarkEnabled \
+        -XX:SurvivorRatio=8 \
+        -XX:MaxTenuringThreshold=1 \
+        -XX:+HeapDumpOnOutOfMemoryError"
+
+# Special-case path variables.
+case "`uname`" in
+    CYGWIN*)
+        CLASSPATH=`cygpath -p -w "$CLASSPATH"`
+        APP_HOME=`cygpath -p -w "$APP_HOME"`
+        APP_CONF=`cygpath -p -w "$APP_CONF"`
+        APP_CONF_FILE=`cygpath -p -w "$APP_CONF_FILE"`
+    ;;
+esac
+
+debug=off
+if [ "$debug" = "on" ]; then
+echo APP_HOME         : $APP_HOME
+echo APP_CONF         : $APP_CONF
+echo APP_PORT         : $APP_PORT
+echo JAVA             : $JAVA
+echo JVM_OPTS         : $JVM_OPTS
+echo CLASSPATH        : $CLASSPATH
+echo PIDFILE          : $PIDFILE
+fi
