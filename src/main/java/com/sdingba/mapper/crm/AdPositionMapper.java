@@ -1,11 +1,11 @@
-package com.sdingba.mapper;
+package com.sdingba.mapper.crm;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.sdingba.entity.AdPosition;
-import com.sdingba.entity.AdPositionExample;
+import com.sdingba.entity.crm.AdPosition;
+import com.sdingba.entity.crm.AdPositionExample;
 
 
 

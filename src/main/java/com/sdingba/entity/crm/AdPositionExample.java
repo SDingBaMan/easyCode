@@ -1,4 +1,4 @@
-package com.sdingba.entity;
+package com.sdingba.entity.crm;
 
 import java.util.ArrayList;
 import java.util.List;
