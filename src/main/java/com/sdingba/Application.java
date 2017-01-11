@@ -3,6 +3,7 @@ package com.sdingba;
 import javax.annotation.Resource;
 
 import com.sdingba.config.SystemConfig;
+import com.sdingba.mapper.AdPositionMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -17,8 +18,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class Application {
 
-//     @Resource
-//     private AdPositionMapper adPositionMapper;
+     @Resource
+     private AdPositionMapper adPositionMapper;
     //    @Inject
 //    private InitService initService;
     @Resource
