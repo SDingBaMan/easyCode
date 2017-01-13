@@ -9,8 +9,8 @@ basedir=`cd "$basedir">/dev/null; pwd`
 . $basedir/env
 exec $JAVA \
      $JVM_OPTS \
-     -jar $basedir/target/extend-server*.jar \
-     com.huitui.Application <&- &
+     -jar $basedir/target/initCodeM-1.0.0*.jar \
+     com.sdingba.Application <&- &
 [ ! -z $PIDFILE ] && printf "%d" $! > $PIDFILE
 
 exit $?

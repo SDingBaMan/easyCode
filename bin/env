@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 this="${BASH_SOURCE-$0}"
 if readlink -f "$this" > /dev/null 2>&1
