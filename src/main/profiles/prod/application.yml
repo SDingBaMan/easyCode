@@ -30,3 +30,4 @@ spring:
 mybatis:
   typeAliasesPackage: com.sdingba.entity
   mapper-locations: classpath:mybatis/*.xml
+  configLocation: classpath:/mybatis-config.xml
